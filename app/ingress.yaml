@@ -1,0 +1,18 @@
+# Optional: expose the app via ingress (requires ingress controller)
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: todo-app
+  namespace: default
+spec:
+  rules:
+    - host: todo.local  # add "127.0.0.1 todo.local" to /etc/hosts
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: todo-app
+                port:
+                  number: 80
