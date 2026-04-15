@@ -27,12 +27,12 @@ jobs:
           context: ./todo-app
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/todo-app:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/todo-app:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/argocd:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/argocd:${{ github.sha }}
 
       - name: Update image tag in deployment.yaml
         run: |
-          sed -i "s|image:.*todo-app.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/todo-app:${{ github.sha }}|" app/deployment.yaml
+          sed -i "s|image:.*argocd.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/argocd:${{ github.sha }}|" app/deployment.yaml
 
       - name: Commit updated deployment.yaml
         run: |

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: todo-app
-          image: your-dockerhub-username/todo-app:latest  # updated automatically by CI
+          image: ayan241/argocd:latest  # updated automatically by CI
           ports:
             - containerPort: 3000
           env:
